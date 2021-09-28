@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 
-const CategoryForm = ({ submitHandler, options }) => {
+const CategoryForm = ({ submitHandler, options, selectCategory }) => {
   const [category, setCategory] = useState("");
   const selectedOptions = "";
   const changeHandler = (e) => {
@@ -13,14 +13,17 @@ const CategoryForm = ({ submitHandler, options }) => {
     setCategory("");
   };
   const selectChange = (selectedOptions) => {
-    console.log("this is selectChange", selectedOptions);
+    selectCategory(selectedOptions.value);
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input type="text" value={category} onChange={changeHandler} />
-        <button type="submit">Add Category</button>
-      </form>
+      <div>
+        <h2>Add products category</h2>
+        <form onSubmit={onSubmit}>
+          <input type="text" value={category} onChange={changeHandler} />
+          <button type="submit">Add Category</button>
+        </form>
+      </div>
       <Select
         options={options}
         onChange={selectChange}

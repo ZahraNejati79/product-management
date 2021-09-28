@@ -7,6 +7,12 @@ const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [options, setOptions] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const selectCategory = (selectcategory) => {
+    console.log("selectcC in selectCategory: ", selectcategory);
+    setSelectedCategory(selectcategory);
+  };
 
   useEffect(() => {
     const option = {
@@ -14,17 +20,13 @@ const ProductManagement = () => {
       label: category[category.length - 1],
     };
     setOptions([...options, option]);
-
-    console.log(options);
   }, [category]);
 
-  useEffect(() => {
-    console.log("option");
-  }, [options]);
   const addProduct = (product) => {
+    console.log("this is selectedCategory in add : ", selectedCategory);
     console.log(product);
     const newProduct = {
-      category: product,
+      category: selectedCategory,
       name: product,
       id: products.length,
     };
@@ -40,8 +42,12 @@ const ProductManagement = () => {
 
   return (
     <div>
+      <CategoryForm
+        submitHandler={addCategory}
+        options={options}
+        selectCategory={selectCategory}
+      />
       <ProductForm submitHandler={addProduct} />
-      <CategoryForm submitHandler={addCategory} options={options} />
       <ProductList products={products} />
     </div>
   );

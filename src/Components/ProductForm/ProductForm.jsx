@@ -14,7 +14,7 @@ const ProductForm = ({ submitHandler }) => {
   return (
     <form onSubmit={onSubmit}>
       <input onChange={onchange} value={product} type="text" />
-      <button type="submit">Add</button>
+      <button type="submit">Add product</button>
     </form>
   );
 };

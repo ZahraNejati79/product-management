@@ -1,6 +1,8 @@
+import styles from "./Product.module.css";
+
 const Product = ({ product }) => {
   return (
-    <div>
+    <div className={styles.product}>
       <div>category:{product.category}</div>
       <div>name:{product.name}</div>
     </div>
