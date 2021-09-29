@@ -1,0 +1,21 @@
+.productForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.productInput {
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin: 2px;
+}
+.productInput:focus {
+  outline: none;
+  border: 1px solid #e1e1e11f;
+}
+.productForm button {
+  padding: 2px 10px;
+}
