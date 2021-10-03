@@ -61,7 +61,7 @@ const ProductManagement = () => {
         </>
       ) : show === "true" ? (
         <div>
-          <button onClick={exiteHandler}> exite</button>
+          <button onClick={exiteHandler}> exit</button>
           <CategoryForm
             submitHandler={addCategory}
             options={options}
@@ -71,7 +71,7 @@ const ProductManagement = () => {
         </div>
       ) : (
         <div>
-          <button onClick={exiteHandler}> exite</button>
+          <button onClick={exiteHandler}> exit</button>
           <ShowManagement products={products} category={category} />
         </div>
       )}
