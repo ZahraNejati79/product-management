@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import styles from "./ProductManagement.module.css";
 import CategoryForm from "../CategoryForm/CategoryForm";
 import ProductForm from "../ProductForm/ProductForm";
-import ProductList from "../ProductList/ProductList";
+import ShowManagement from "../ShowManagement/ShowMangement";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [options, setOptions] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [show, setShow] = useState("");
 
   const selectCategory = (selectcategory) => {
     console.log("selectcC in selectCategory: ", selectcategory);
@@ -40,15 +42,39 @@ const ProductManagement = () => {
     console.log(category);
   };
 
+  const ManagerHandler = () => {
+    setShow("true");
+  };
+  const showHandler = () => {
+    setShow("false");
+  };
+  const exiteHandler = () => {
+    setShow("");
+  };
+
   return (
-    <div>
-      <CategoryForm
-        submitHandler={addCategory}
-        options={options}
-        selectCategory={selectCategory}
-      />
-      <ProductForm submitHandler={addProduct} />
-      <ProductList products={products} />
+    <div className={styles.productManager}>
+      {show === "" ? (
+        <>
+          <button onClick={ManagerHandler}>Product manager</button>
+          <button onClick={showHandler}>show status</button>
+        </>
+      ) : show === "true" ? (
+        <div>
+          <button onClick={exiteHandler}> exite</button>
+          <CategoryForm
+            submitHandler={addCategory}
+            options={options}
+            selectCategory={selectCategory}
+          />
+          <ProductForm submitHandler={addProduct} />
+        </div>
+      ) : (
+        <div>
+          <button onClick={exiteHandler}> exite</button>
+          <ShowManagement products={products} category={category} />
+        </div>
+      )}
     </div>
   );
 };
